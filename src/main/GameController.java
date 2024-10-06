@@ -42,7 +42,7 @@ public class GameController {
         FontMetrics fm = g2.getFontMetrics();
         String text = "NEXT";
         int textWidth = fm.stringWidth(text);
-        int textX = x + (200 - textWidth) / 2; // Centramos el texto horizontalmente
+        int textX = x + (200 - textWidth) / 2;
         int textY = y - 10;
         g2.setColor(Color.yellow);
         g2.drawString(text, textX, textY);
