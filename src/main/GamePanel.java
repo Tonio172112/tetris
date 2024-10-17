@@ -11,7 +11,7 @@ import java.awt.event.KeyListener;
 public class GamePanel extends JPanel implements Runnable, KeyListener {
     
     public static final int WIDTH = 1280;
-    public static final int HEIGHT = 720;
+    public static final int HEIGHT = 800;
     final int FPS = 60;
     Thread gameThread;
     GameController gc;

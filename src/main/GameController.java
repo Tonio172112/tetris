@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 public class GameController {
     // Area de Juego
     final int WIDTH = 360;
-    final int HEIGHT = 600;
+    final int HEIGHT = 720;
     public static int left_x;
     public static int right_x;
     public static int top_y;
@@ -26,7 +26,7 @@ public class GameController {
         bottom_y = top_y + HEIGHT;
         
         // Inicializar al jugador en el centro del área de juego
-        player = new Player(left_x + WIDTH/2 - 15, bottom_y - 50);
+        player = new Player(left_x + WIDTH/2 - 28, bottom_y-72);
     }
 
     public void update() {
@@ -37,7 +37,7 @@ public class GameController {
         // Dibujar Area de Juego
         g2.setColor(Color.white);
         g2.setStroke(new BasicStroke(4f));
-        g2.drawRect(left_x-4, top_y-4, WIDTH+8, HEIGHT+8);
+        g2.drawRect(left_x-2, top_y-2, WIDTH+4, HEIGHT+4);
 
         // Dibujar Cuadrado Siguiente Pieza
         g2.setColor(Color.yellow);
@@ -70,10 +70,11 @@ public class GameController {
                 break;
             case KeyEvent.VK_UP:
                 player.jump();
-                System.out.println("Tecla espacio presionada");
+                System.out.println("Tecla salto presionada");
                 break;
             case KeyEvent.VK_SPACE:
-            	player.jump();
+                player.jump(); // Permitir que el salto se ejecute también con espacio
+                break;
         }
     }
 

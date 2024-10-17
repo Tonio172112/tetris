@@ -6,8 +6,8 @@ import java.awt.Rectangle;
 
 public class Player {
     private int x, y;
-    private int width = 30;
-    private int height = 50;
+    private int width = 56;
+    private int height = 72;
     private int speed = 5;
     private int jumpStrength = 15;
     private int yVelocity = 0;
@@ -41,19 +41,20 @@ public class Player {
 
     public void moveLeft() {
         x -= speed;
+        // Ajuste preciso al borde izquierdo
         if (x < GameController.left_x) {
             x = GameController.left_x;
         }
-        System.out.println("Jugador moviéndose a la izquierda. Nueva posición X: " + x);
     }
 
     public void moveRight() {
         x += speed;
-        if (x > GameController.right_x - width) {
+        // Ajuste preciso al borde derecho
+        if (x + width > GameController.right_x) {
             x = GameController.right_x - width;
         }
-        System.out.println("Jugador moviéndose a la derecha. Nueva posición X: " + x);
     }
+
 
     public void jump() {
         if (!isJumping) {
