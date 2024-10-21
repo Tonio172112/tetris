@@ -1,19 +1,20 @@
+
 package main;
 import java.awt.Color;
 import java.util.Random;
 public class Tetromino {
     private int[][] shape; // La forma del tetromino
     private Color color;   // Color del tetromino
-    private int x;         // Posici贸n x en el tablero
-    private int y;         // Posici贸n y en el tablero
+    private int x;         // Posici髇 x en el tablero
+    private int y;         // Posici髇 y en el tablero
     // Constructor
     public Tetromino(int[][] shape, Color color) {
         this.shape = shape;
         this.color = color;
-        this.x = 0; // Posici贸n inicial en x
-        this.y = 0; // Posici贸n inicial en y
+        this.x = 0; // Posici髇 inicial en x
+        this.y = 0; // Posici髇 inicial en y
     }
-    // M茅todo para rotar el tetromino
+    // M閠odo para rotar el tetromino
     public void rotate() {
         int[][] newShape = new int[shape[0].length][shape.length];
         for (int i = 0; i < shape.length; i++) {
@@ -38,7 +39,7 @@ public class Tetromino {
             default: return createI(); // Fallback
         }
     }
-    // M茅todos para mover el tetromino
+    // M閠odos para mover el tetromino
     public void moveLeft() {
         x--;
     }
@@ -68,7 +69,7 @@ public class Tetromino {
     public int getY() {
         return y;
     }
-    // M茅todos est谩ticos para crear los 7 tetrominos
+    // M閠odos est醫icos para crear los 7 tetrominos
     public static Tetromino createI() {
         return new Tetromino(new int[][]{
             {1, 1, 1, 1}

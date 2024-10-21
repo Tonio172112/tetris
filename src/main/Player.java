@@ -1,4 +1,5 @@
 
+
 package main;
 
 import java.awt.Color;
@@ -87,7 +88,7 @@ public class Player {
     }
 
     public int getGridX() {
-        return (x - GameController.left_x) / 30; // Asumiendo que 30 es el tamaÃ±o de bloque
+        return (x - GameController.left_x) / 30; // Asumiendo que 30 es el tamaño de bloque
     }
 
     public int getWidth() {
