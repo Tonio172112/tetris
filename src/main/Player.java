@@ -1,3 +1,4 @@
+
 package main;
 
 import java.awt.Color;
@@ -5,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Player {
-    private int x, y;
+	private int x, y;
     private int width = 56;
     private int height = 72;
     private int speed = 5;
@@ -79,5 +80,49 @@ public class Player {
 
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
+    }
+    
+    public int getY() {
+        return y;
+    }
+
+    public int getGridX() {
+        return (x - GameController.left_x) / 30; // Asumiendo que 30 es el tamaño de bloque
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public boolean isJumping() {
+        return isJumping;
+    }
+
+    public void setJumping(boolean jumping) {
+        isJumping = jumping;
+    }
+
+    public int getYVelocity() {
+        return yVelocity;
+    }
+
+    public void setYVelocity(int yVelocity) {
+        this.yVelocity = yVelocity;
     }
 }

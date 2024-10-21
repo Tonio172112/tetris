@@ -17,14 +17,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     GameController gc;
 
     public GamePanel() {
-        // Configuracion del Panel
-        this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
+        // Configuración del Panel
+        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.setBackground(Color.black);
         this.setLayout(null);
         this.setFocusable(true);
         this.addKeyListener(this);
+
+        // Iniciar el controlador del juego
         gc = new GameController();
-        startGame();  // Iniciar el juego autom�ticamente
     }
 
     public void startGame() {
@@ -34,30 +35,32 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
     @Override
     public void run() {
-        // Bucle de Juego
-        double drawInterval = 1000000000/FPS;
+        double drawInterval = 1000000000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
-        while(gameThread != null){
+
+        // Bucle principal del juego
+        while (gameThread != null) {
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
-            if(delta >= 1){
-                update();
-                repaint();
+            if (delta >= 1) {
+                update();   // Actualizar lógica del juego
+                repaint();  // Redibujar la pantalla
                 delta--;
             }
         }
     }
 
-    private void update(){
+    private void update() {
         gc.update();
     }
 
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D)g;
+        Graphics2D g2 = (Graphics2D) g;
         gc.draw(g2);
     }
 

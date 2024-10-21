@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -24,7 +25,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         this.setFocusable(true);
         this.addKeyListener(this);
         gc = new GameController();
-        startGame();  // Iniciar el juego automáticamente
+        startGame();  // Iniciar el juego automï¿½ticamente
     }
 
     public void startGame() {
