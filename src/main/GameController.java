@@ -8,26 +8,27 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 public class GameController {
-    final static int WIDTH = 360;
-    final static int HEIGHT = 720;
+	final static int WIDTH = 360;    // Ancho del área de juego
+    final static int HEIGHT = 720;   // Alto del área de juego
     public static int left_x;
     public static int right_x;
     public static int top_y;
     public static int bottom_y;
     public static final int BLOCK_SIZE = 30;
-
+    
     private Player player;
     private TetrisAI ai;
     private int[][] board;
     private boolean gameOver;
 
     public GameController() {
-        left_x = (GamePanel.WIDTH / 2) - (WIDTH / 2);
+    	left_x = (GamePanel.WIDTH / 2) - (WIDTH / 2);
         right_x = left_x + WIDTH;
-        top_y = 50;
-        bottom_y = top_y + HEIGHT;
+        top_y = 50;  // Empezamos un poco abajo del borde superior
+        bottom_y = top_y + HEIGHT;  // Este es el límite inferior real
 
-        board = new int[20][10];
+        // Calculamos el número de filas y columnas basado en las dimensiones
+        board = new int[HEIGHT/BLOCK_SIZE][WIDTH/BLOCK_SIZE]; // Esto daría 24x12 celdas
 
         player = new Player(left_x + WIDTH / 2 - 28, bottom_y - 72);
         ai = new TetrisAI(this);
@@ -101,16 +102,20 @@ public class GameController {
         int gridX = (tetromino.getX() - left_x) / BLOCK_SIZE;
         int gridY = (nextY - top_y) / BLOCK_SIZE;
 
+        // Verifica si la siguiente posición excede el límite inferior
+        if (nextY + (shape.length * BLOCK_SIZE) > bottom_y) {
+            return false;
+        }
+
         for (int row = 0; row < shape.length; row++) {
             for (int col = 0; col < shape[row].length; col++) {
                 if (shape[row][col] != 0) {
-                    // Verificar que la fila no estÃ© fuera de los lÃ­mites del tablero
-                    if (gridY + row >= board.length) {
-                        return false; // La pieza estÃ¡ en el borde inferior.
-                    }
-                    // Verificar colisiÃ³n con piezas fijas en el tablero
-                    if (board[gridY + row][gridX + col] != 0) {
-                        return false;
+                    // Verifica colisión con el tablero
+                    if (gridY + row >= 0 && gridY + row < board.length && 
+                        gridX + col >= 0 && gridX + col < board[0].length) {
+                        if (board[gridY + row][gridX + col] != 0) {
+                            return false;
+                        }
                     }
                 }
             }
